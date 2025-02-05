@@ -8,17 +8,18 @@ WORKDIR /var/www/html
 COPY . /var/www/html
 
 # Set file permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
-# Install required libraries and PHP extensions
+# Install utilities required for mount and disk operations
 RUN apt-get update && apt-get install -y \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    libmagic-dev \
-    && docker-php-ext-install gd \
+    util-linux \
+    sudo \
+    libcap2-bin \
+    mount \
     && rm -rf /var/lib/apt/lists/*
+
+RUN echo "www-data ALL=(ALL) NOPASSWD: /usr/bin/nsenter" > /etc/sudoers.d/nsenter \
+  && chmod 0440 /etc/sudoers.d/nsenter
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite

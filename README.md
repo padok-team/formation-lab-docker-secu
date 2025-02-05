@@ -22,7 +22,7 @@ This project contains several labs, each demonstrating a different Docker config
 `docker build -t capabilities-lab .`
 
 3. Run the container with the SYS_ADMIN capability:
-`docker run --cap-add SYS_ADMIN -p 8080:8080 capabilities-lab`
+`docker run --rm --cap-add=ALL --security-opt apparmor=unconfined --name capabilities-lab -p 127.0.0.1:8080:8080 capabilities-lab`
 
 ## Lab 3: Root Lab
 
