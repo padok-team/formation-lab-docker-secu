@@ -11,7 +11,7 @@ This project contains several labs, each demonstrating a different Docker config
 `docker build -t socket-lab .`
 
 3. Run the container while mounting the current folder (which exposes the socket):
-`docker run -d -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 socket-lab`
+`docker run -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 socket-lab`
 
 ## Lab 2: Capabilities Lab
 
@@ -22,7 +22,7 @@ This project contains several labs, each demonstrating a different Docker config
 `docker build -t capabilities-lab .`
 
 3. Run the container with the SYS_ADMIN capability:
-`docker run -d --cap-add SYS_ADMIN -p 8080:8080 capabilities-lab`
+`docker run --cap-add SYS_ADMIN -p 8080:8080 capabilities-lab`
 
 ## Lab 3: Root Lab
 
@@ -31,7 +31,7 @@ This project contains several labs, each demonstrating a different Docker config
 2. Build the Docker image (ensure you have a valid Dockerfile in the folder):
 `docker build -t root-lab .`
 3. Run the container with privileged mode and using the root user:
-`docker run -d --privileged -u root -p 8080:8080 root-lab`
+`docker run --privileged -u root -p 8080:8080 root-lab`
 
 ## Lab 4: Unupdated-Docker Lab
 

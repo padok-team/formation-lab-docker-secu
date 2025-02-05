@@ -7,6 +7,8 @@ WORKDIR /app
 # Copy the requirements file and install the dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN apt update && apt install -y curl
+COPY --from=docker:dind /usr/local/bin/docker /usr/local/bin/
 
 # Copy the rest of the application code
 COPY . .
