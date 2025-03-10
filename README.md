@@ -39,7 +39,7 @@ Go to http://localhost:8080 and try to exploit a misconfiguration to escape the 
 2. Build the Docker image (ensure you have a valid Dockerfile in the folder):
 `docker build -t root-lab .`
 3. Run the container with privileged mode and using the root user:
-`docker run --privileged -u root -p 8080:8080 root-lab`
+`docker run --rm --cap-add=SYS_ADMIN --cap-add=SYS_CHROOT --cap-add=DAC_OVERRIDE --security-opt apparmor=unconfined --pid=host -p 8080:8080 root-lab`
 
 Go to http://localhost:8080 and try to exploit a misconfiguration to escape the Docker container and exec into the host.
 
