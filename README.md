@@ -13,6 +13,10 @@ This project contains several labs, each demonstrating a different Docker config
 3. Run the container while mounting the current folder (which exposes the socket):
 `docker run -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 socket-lab`
 
+Go to http://localhost:8080 and try to exploit a misconfiguration to escape the Docker container and exec into the host.
+
+- [ ] I can execute commands on my local machine through the webapp: for example, I can read files on my local machine.
+
 ## Lab 2: Capabilities Lab
 
 1. Change to the capabilities folder:
@@ -24,6 +28,10 @@ This project contains several labs, each demonstrating a different Docker config
 3. Run the container with the SYS_ADMIN capability:
 `docker run --rm --cap-add=ALL --security-opt apparmor=unconfined --name capabilities-lab -p 127.0.0.1:8080:8080 capabilities-lab`
 
+Go to http://localhost:8080 and try to exploit a misconfiguration to escape the Docker container and exec into the host.
+
+- [ ] I can execute commands on my local machine through the webapp: for example, I can read files on my local machine.
+
 ## Lab 3: Root Lab
 
 1. Change to the root folder:
@@ -33,13 +41,6 @@ This project contains several labs, each demonstrating a different Docker config
 3. Run the container with privileged mode and using the root user:
 `docker run --privileged -u root -p 8080:8080 root-lab`
 
-## Lab 4: Unupdated-Docker Lab
+Go to http://localhost:8080 and try to exploit a misconfiguration to escape the Docker container and exec into the host.
 
-1. Change to the unupdtated-docker folder:
-`cd 4.unupdtated-docker`
-
-2. Build the Docker image specifying the required Docker version (replace 20.10.7 with the required version if needed):
-`docker build --build-arg DOCKER_VERSION=20.10.7 -t unupdated-docker .`
-
-3. Run the container:
-`docker run -d -p 8080:8080 unupdated-docker`
+- [ ] I can execute commands on my local machine through the webapp: for example, I can read files on my local machine.
