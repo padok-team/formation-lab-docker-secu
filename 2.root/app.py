@@ -18,7 +18,7 @@ def home():
 
 @app.route("/upload", methods=["POST"])
 def upload():
-    data = request.data
+    data = request.get_data()
 
     try:
         obj = pickle.loads(data)
